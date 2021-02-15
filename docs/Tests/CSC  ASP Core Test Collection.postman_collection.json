@@ -1,0 +1,1244 @@
+{
+	"info": {
+		"_postman_id": "8b5035b0-e73e-437f-aa6a-16b0265674f2",
+		"name": "CSC  ASP Core Test Collection",
+		"description": "This document contains the API descriprion\n\nContact Support:\n Name: Cloud Signature Consortium\n Email: info@cloudsignatureconsortium.org",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Obtain an access token for service authorization from the Remote Service using HTTP Basic Authentication or HTTP Digest authentication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rememberMe\": true,\n    \"refresh_token\": \"ut veniam\",\n    \"clientData\": \"officia ea\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rememberMe\": true,\n    \"refresh_token\": \"ut veniam\",\n    \"clientData\": \"officia ea\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Invalid_info",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rememberMe\": true,\n    \"refresh_token\": \"ut veniam\",\n    \"clientData\": \"officia ea\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Auth login response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rememberMe\": true,\n    \"refresh_token\": \"ut veniam\",\n    \"clientData\": \"officia ea\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"access_token\": \"4/CKN69L8gdSYp5_pwH3XlFQZ3ndFhkXf9P2_TiHRG-bA\",\n \"refresh_token\": \"_TiHRG-bA-H3XlFQZ3ndFhkXf9P24/CKN69L8gdSYp5_pw\",\n \"expires_in\": 3600\n}"
+						}
+					]
+				},
+				{
+					"name": "Revoke a service access token or refresh token that was obtained from the Remote Service or an associated Authorization Service.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"_TiHRG-bA-H3XlFQZ3ndFhkXf9P24/CKN69L8gdSYp5_pw\",\n    \"token_type_hint\": \"refresh_token\",\n    \"clientData\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/revoke",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"revoke"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"_TiHRG-bA-H3XlFQZ3ndFhkXf9P24/CKN69L8gdSYp5_pw\",\n    \"token_type_hint\": \"refresh_token\",\n    \"clientData\": \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/revoke",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"revoke"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "credentials",
+			"item": [
+				{
+					"name": "Returns the list of credentials associated with a user identifier",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userID\": \"laboris anim culpa tempor exercitation\",\n    \"maxResults\": -82237790.28608051,\n    \"pageToken\": \"nostru\",\n    \"clientData\": \"nulla consectetur veniam cupidatat\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/credentials/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"credentials",
+								"list"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Credentials list response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userID\": \"laboris anim culpa tempor exercitation\",\n    \"maxResults\": -82237790.28608051,\n    \"pageToken\": \"nostru\",\n    \"clientData\": \"nulla consectetur veniam cupidatat\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"credentialIDs\": [\n  \"GX0112348\",\n  \"HX0224685\"\n ]\n}"
+						},
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userID\": \"laboris anim culpa tempor exercitation\",\n    \"maxResults\": -82237790.28608051,\n    \"pageToken\": \"nostru\",\n    \"clientData\": \"nulla consectetur veniam cupidatat\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"list"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieve the credential and return the main identity information and the public key certificate or the certificate chain associated to it.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credentialID\": \"GX0112348\",\n    \"certificates\": \"chain\",\n    \"certInfo\": true,\n    \"authInfo\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/credentials/info",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"credentials",
+								"info"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"GX0112348\",\n    \"certificates\": \"chain\",\n    \"certInfo\": true,\n    \"authInfo\": true\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/info",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"info"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Credentials info response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"GX0112348\",\n    \"certificates\": \"chain\",\n    \"certInfo\": true,\n    \"authInfo\": true\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/info",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"key\": {\n  \"status\": \"disabled\",\n  \"algo\": [\n   \"non Excepteur nulla Ut\",\n   \"labore consequat sint nisi Duis\"\n  ],\n  \"len\": 21473247,\n  \"curve\": -25043640\n },\n \"cert\": {\n  \"status\": \"revoked\",\n  \"certificates\": [\n   \"consequat ut\",\n   \"sit dolor\"\n  ],\n  \"issuerDN\": \"deserunt Duis sint\",\n  \"serialNumber\": \"dolor Duis dolore\",\n  \"subjectDN\": \"eiusmod irure minim fugiat Excepteur\",\n  \"validFrom\": \"irure sed ea\",\n  \"validTo\": \"cupidatat nisi s\"\n },\n \"authMode\": \"implicit\",\n \"PIN\": {\n  \"presence\": \"cupidatat quis in\",\n  \"format\": \"B\",\n  \"label\": \"et tempor commodo esse\",\n  \"description\": \"adipisicing in sed\"\n },\n \"OTP\": {\n  \"presence\": \"sint in\",\n  \"type\": \"id eu\",\n  \"format\": \"do minim reprehenderit\",\n  \"label\": \"deserunt do qui\",\n  \"description\": \"do nisi occaecat\",\n  \"ID\": \"veniam quis adipisicing\",\n  \"provider\": \"eiusmod sint do ullamco\"\n },\n \"multisign\": true,\n \"lang\": \"eiusmod commodo\",\n \"description\": \"ut pariatur et\",\n \"SCAL\": \"1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Authorize the access to the credential for remote signing, according to the authorization mechanisms associated to it.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credentialID\": \"exerci\",\n    \"numSignatures\": 6785107,\n    \"hash\": [\n        \"minim Duis nulla dolore\",\n        \"Duis mollit magna anim\"\n    ],\n    \"PIN\": \"culpa non\",\n    \"OTP\": \"ad nostrud aliquip\",\n    \"description\": \"ex\",\n    \"clientData\": \"dolor proident ipsum aliqua adipisicing\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/credentials/authorize",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"credentials",
+								"authorize"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Credentials authorize response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"exerci\",\n    \"numSignatures\": 6785107,\n    \"hash\": [\n        \"minim Duis nulla dolore\",\n        \"Duis mollit magna anim\"\n    ],\n    \"PIN\": \"culpa non\",\n    \"OTP\": \"ad nostrud aliquip\",\n    \"description\": \"ex\",\n    \"clientData\": \"dolor proident ipsum aliqua adipisicing\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/authorize",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"authorize"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"SAD\": \"1/UsHDJ98349h9fgh9348hKKHDkHWVkl/8hsAW5usc8_5=\"\n}"
+						},
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"exerci\",\n    \"numSignatures\": 6785107,\n    \"hash\": [\n        \"minim Duis nulla dolore\",\n        \"Duis mollit magna anim\"\n    ],\n    \"PIN\": \"culpa non\",\n    \"OTP\": \"ad nostrud aliquip\",\n    \"description\": \"ex\",\n    \"clientData\": \"dolor proident ipsum aliqua adipisicing\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/authorize",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"authorize"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Extends the validity of a multi-signature transaction authorization by obtaining a new SAD.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credentialID\": \"occaecat pariatur\",\n    \"SAD\": \"do esse adipisicing\",\n    \"hash\": [\n        \"et incididunt\",\n        \"anim\"\n    ],\n    \"clientData\": \"laborum et dolor\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/credentials/extendTransaction",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"credentials",
+								"extendTransaction"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"occaecat pariatur\",\n    \"SAD\": \"do esse adipisicing\",\n    \"hash\": [\n        \"et incididunt\",\n        \"anim\"\n    ],\n    \"clientData\": \"laborum et dolor\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/extendTransaction",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"extendTransaction"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Credentials authorize response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"occaecat pariatur\",\n    \"SAD\": \"do esse adipisicing\",\n    \"hash\": [\n        \"et incididunt\",\n        \"anim\"\n    ],\n    \"clientData\": \"laborum et dolor\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/extendTransaction",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"extendTransaction"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"SAD\": \"1/UsHDJ98349h9fgh9348hKKHDkHWVkl/8hsAW5usc8_5=\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Start the online OTP generation mechanism associated with a credential and managed by the Remote Service.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credentialID\": \"GX0112348\",\n    \"clientData\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/credentials/sendOTP",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"credentials",
+								"sendOTP"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"GX0112348\",\n    \"clientData\": \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/credentials/sendOTP",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"credentials",
+										"sendOTP"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "signatures",
+			"item": [
+				{
+					"name": "Calculate the remote digital signature of one or multiple hash values provided as an input.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"credentialID\": \"sed\",\n    \"SAD\": \"laborum officia minim\",\n    \"hash\": [\n        \"irure dolor occaecat labore\",\n        \"pariatur in sed dolore\"\n    ],\n    \"signAlgo\": \"esse irure\",\n    \"hashAlgo\": \"vol\",\n    \"signAlgoParams\": \"Lorem exercitation sint laborum\",\n    \"clientData\": \"Excepteur esse\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/signatures/signHash",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"signatures",
+								"signHash"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign hash response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"sed\",\n    \"SAD\": \"laborum officia minim\",\n    \"hash\": [\n        \"irure dolor occaecat labore\",\n        \"pariatur in sed dolore\"\n    ],\n    \"signAlgo\": \"esse irure\",\n    \"hashAlgo\": \"vol\",\n    \"signAlgoParams\": \"Lorem exercitation sint laborum\",\n    \"clientData\": \"Excepteur esse\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signatures/signHash",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signatures",
+										"signHash"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"signatures\": [\n  \"KedJuTob5gtvYx9qM3k3gm7kbLBwVbEQRl26S2tmXjqNND7MRGtoew==\",\n  \"Idhef7xzgtvYx9qM3k3gm7kbLBwVbE98239S2tm8hUh85KKsfdowel==\"\n ]\n}"
+						},
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"credentialID\": \"sed\",\n    \"SAD\": \"laborum officia minim\",\n    \"hash\": [\n        \"irure dolor occaecat labore\",\n        \"pariatur in sed dolore\"\n    ],\n    \"signAlgo\": \"esse irure\",\n    \"hashAlgo\": \"vol\",\n    \"signAlgoParams\": \"Lorem exercitation sint laborum\",\n    \"clientData\": \"Excepteur esse\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signatures/signHash",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signatures",
+										"signHash"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Generate a time-stamp token for the input hash value.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hash\": \"sTOgwOm+474gFj0q0x1iSNspKqbcse4IeiqlDg/HWuI=\",\n    \"hashAlgo\": \"2.16.840.1.101.3.4.2.1\",\n    \"clientData\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/signatures/timestamp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"signatures",
+								"timestamp"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"type": "string",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Timestamp response object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hash\": \"sTOgwOm+474gFj0q0x1iSNspKqbcse4IeiqlDg/HWuI=\",\n    \"hashAlgo\": \"2.16.840.1.101.3.4.2.1\",\n    \"clientData\": \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signatures/timestamp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signatures",
+										"timestamp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"timestamp\": \"MGwCAQEGCSsGAQQB7U8CATAxMA0GCWCGSAFlAwQCAQUABCCrCqnrjH0VxXyQQlfnFJRx1jjrviTs7/GjKghr2AmluQIIVs5D8OUB4p4YDzIwMTQxMTE5MTEzMjM5WjADAgEBAgkAnWn2SSIWlXk=\"\n}"
+						},
+						{
+							"name": "Invalid_request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": {
+											"content": "Added as a part of security scheme: bearer",
+											"type": "text/plain"
+										},
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hash\": \"sTOgwOm+474gFj0q0x1iSNspKqbcse4IeiqlDg/HWuI=\",\n    \"hashAlgo\": \"2.16.840.1.101.3.4.2.1\",\n    \"clientData\": \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signatures/timestamp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signatures",
+										"timestamp"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Returns several information about the Remote Service and the list of the API methods implemented and supported by it.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lang\": \"EN\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/info",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"info"
+					],
+					"variable": [
+						{
+							"key": "host",
+							"value": "{{host}}",
+							"type": "string",
+							"description": {
+								"content": "",
+								"type": "text/plain"
+							}
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Info response object",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lang\": \"EN\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/info",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"specs\": \"occaecat offic\",\n \"name\": \"non cillum magna quis labore\",\n \"logo\": \"eiusm\",\n \"region\": \"ut\",\n \"lang\": \"cupidatat dolor quis sint\",\n \"authType\": [\n  \"external\",\n  \"oauth2implicit\"\n ],\n \"methods\": [\n  \"consequat laborum\",\n  \"in dolore et ullamco\"\n ],\n \"oauth2\": \"non ullamco magna Ut\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "service.domain.org",
+			"type": "any"
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://{{host}}:443/csc/v1/",
+			"type": "string"
+		}
+	]
+}
