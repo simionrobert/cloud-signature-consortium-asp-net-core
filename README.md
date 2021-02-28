@@ -14,7 +14,6 @@ docker run -p 5000:5000 csc
 ## Authors
 
 - **Simion Robert George** - [simionrobert](https://github.com/simionrobert)
-- **Davut Tokgöz (DaBNet)**
 
 See also the list of [contributors](https://github.com/simionrobert/CSC-Framework/contributors) who participated in this project.
 
