@@ -34,7 +34,7 @@ namespace CSC.Controllers
         /// <response code="200">Sign hash response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//signatures/signHash")]
+        [Route("/csc/v1/signatures/signHash")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("SignaturesSignHash")]
@@ -62,7 +62,7 @@ namespace CSC.Controllers
         /// <response code="200">Timestamp response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//signatures/timestamp")]
+        [Route("/csc/v1/signatures/timestamp")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("SignaturesTimestamp")]

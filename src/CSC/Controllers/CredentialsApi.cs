@@ -34,7 +34,7 @@ namespace CSC.Controllers
         /// <response code="200">Credentials authorize response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//credentials/authorize")]
+        [Route("/csc/v1/credentials/authorize")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CredentialsAuthorize")]
@@ -62,7 +62,7 @@ namespace CSC.Controllers
         /// <response code="200">Credentials authorize response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//credentials/extendTransaction")]
+        [Route("/csc/v1/credentials/extendTransaction")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CredentialsExtendTransaction")]
@@ -90,7 +90,7 @@ namespace CSC.Controllers
         /// <response code="200">Credentials info response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//credentials/info")]
+        [Route("/csc/v1/credentials/info")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CredentialsInfo")]
@@ -118,7 +118,7 @@ namespace CSC.Controllers
         /// <response code="200">Credentials list response object</response>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//credentials/list")]
+        [Route("/csc/v1/credentials/list")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CredentialsList")]
@@ -145,7 +145,7 @@ namespace CSC.Controllers
         /// <param name="body">Credentials sendOTP request object</param>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//credentials/sendOTP")]
+        [Route("/csc/v1/credentials/sendOTP")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CredentialsSendOTP")]

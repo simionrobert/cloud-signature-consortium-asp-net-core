@@ -33,7 +33,7 @@ namespace CSC.Controllers
         /// <param name="body">Info request object</param>
         /// <response code="200">Info response object</response>
         [HttpPost]
-        [Route("/csc/v1//info")]
+        [Route("/csc/v1/info")]
         [ValidateModelState]
         [SwaggerOperation("Info")]
         [SwaggerResponse(statusCode: 200, type: typeof(OutputInfo), description: "Info response object")]

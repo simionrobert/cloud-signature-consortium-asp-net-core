@@ -35,7 +35,7 @@ namespace CSC.Controllers
         /// <response code="400">Invalid_request</response>
         /// <response code="401">Invalid_info</response>
         [HttpPost]
-        [Route("/csc/v1//auth/login")]
+        [Route("/csc/v1/auth/login")]
         [Authorize(AuthenticationSchemes = BasicAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AuthLogin")]
@@ -65,7 +65,7 @@ namespace CSC.Controllers
         /// <param name="body">Revoke login request object</param>
         /// <response code="400">Invalid_request</response>
         [HttpPost]
-        [Route("/csc/v1//auth/revoke")]
+        [Route("/csc/v1/auth/revoke")]
         [Authorize(AuthenticationSchemes = BearerAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AuthRevoke")]
