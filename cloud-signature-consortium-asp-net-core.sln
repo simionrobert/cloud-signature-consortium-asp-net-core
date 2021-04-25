@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloud-signature-consortium-asp-net-core", "src\CSC\cloud-signature-consortium-asp-net-core.csproj", "{1EC130B2-56BD-4855-8717-578116193D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSCD", "src\rscd\RSCD.csproj", "{55BDEC78-0FDD-46C8-A573-00BD48D10930}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenIDConnectProvider", "src\OpenIDConnectProvider\OpenIDConnectProvider.csproj", "{DDEC027F-457F-4792-9EC2-72A7653AE818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "src\APIGateway\APIGateway.csproj", "{144A9838-44B1-4A79-B41F-AE42971C9BD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1EC130B2-56BD-4855-8717-578116193D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EC130B2-56BD-4855-8717-578116193D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1EC130B2-56BD-4855-8717-578116193D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1EC130B2-56BD-4855-8717-578116193D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BDEC78-0FDD-46C8-A573-00BD48D10930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BDEC78-0FDD-46C8-A573-00BD48D10930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BDEC78-0FDD-46C8-A573-00BD48D10930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BDEC78-0FDD-46C8-A573-00BD48D10930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDEC027F-457F-4792-9EC2-72A7653AE818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEC027F-457F-4792-9EC2-72A7653AE818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEC027F-457F-4792-9EC2-72A7653AE818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEC027F-457F-4792-9EC2-72A7653AE818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144A9838-44B1-4A79-B41F-AE42971C9BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144A9838-44B1-4A79-B41F-AE42971C9BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144A9838-44B1-4A79-B41F-AE42971C9BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144A9838-44B1-4A79-B41F-AE42971C9BD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
