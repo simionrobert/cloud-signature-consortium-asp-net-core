@@ -20,34 +20,16 @@ namespace OpenIDConnectProvider
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            var section = Configuration.GetSection("SSOConfig");
 
-            var builder = services.AddIdentityServer()
-               .AddInMemoryIdentityResources(Config.IdentityResources)
-               .AddInMemoryApiScopes(Config.ApiScopes)
-               .AddInMemoryClients(Config.Clients)
-               .AddTestUsers(TestUsers.Users);
+            services.AddControllersWithViews();
 
-            builder.AddDeveloperSigningCredential();
-
-            services.AddAuthentication()
-                .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "interactive.confidential";
-                    options.ClientSecret = "secret";
-                    options.ResponseType = "code";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                });
+            services.AddIdentityServer()
+                    .AddInMemoryApiResources(Config.GetApiResources(section))
+                    .AddInMemoryApiScopes(Config.ApiScopes)
+                    .AddInMemoryClients(Config.GetClients)
+                      .AddTestUsers(Config.GetUsers())
+                      .AddDeveloperSigningCredential();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,8 +47,8 @@ namespace OpenIDConnectProvider
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityServer();
@@ -74,7 +56,7 @@ namespace OpenIDConnectProvider
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

@@ -22,7 +22,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/credentials/list",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/credentials/info",
@@ -34,7 +38,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/credentials/info",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/credentials/authorise",
@@ -46,7 +54,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/credentials/authorise",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/credentials/extendTransaction",
@@ -58,7 +70,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/credentials/extendTransaction",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/credentials/sendOTP",
@@ -70,7 +86,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/credentials/sendOTP",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/signatures/signHash",
@@ -82,7 +102,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/signatures/signHash",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service"]
+      }
     },
     {
       "DownstreamPathTemplate": "/csc/v1/signatures/timestamp",
@@ -94,7 +118,11 @@
         }
       ],
       "UpstreamPathTemplate": "/csc/v1/signatures/timestamp",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "CSC-Service-Primary",
+        "AllowedScopes": [ "service" ]
+      }
     }
   ],
   "GlobalConfiguration": {

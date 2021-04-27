@@ -5,17 +5,41 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.Extensions.Configuration;
 
 namespace APIGateway
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
+
+            var builder = services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme);
+            IdentityServerConfig identityServerConfig = new IdentityServerConfig();
+            Configuration.Bind("IdentityServerConfig", identityServerConfig);
+            if (identityServerConfig != null && identityServerConfig.Resources != null)
+            {
+                foreach (var resource in identityServerConfig.Resources)
+                {
+                    builder.AddIdentityServerAuthentication(resource.Key, options =>
+                    {
+                        options.Authority = $"{identityServerConfig.Protocol}://{identityServerConfig.IP}:{identityServerConfig.Port}";
+                        options.RequireHttpsMetadata = false; //TODO: turn on in prod
+                        options.ApiName = resource.Name;
+                      
+                        //options.SupportedTokens = SupportedTokens.Reference;
+                    });
+                }
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,6 +49,9 @@ namespace APIGateway
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseRouting();
 

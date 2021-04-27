@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Ocelot.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,15 @@ namespace APIGateway
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureAppConfiguration(config => config
-                    .AddJsonFile($"ocelot.json")
-                    .AddJsonFile($"ocelot.csc.json")
-                    .AddJsonFile($"ocelot.oauth.json"));
+
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) => {
+                        config
+                            .AddJsonFile($"ocelot.json", optional: false, reloadOnChange: true)
+                            .AddJsonFile($"ocelot.csc.json", optional: false, reloadOnChange: true)
+                            .AddJsonFile($"ocelot.oauth.json", optional: false, reloadOnChange: true);
+
+                        config.AddOcelot(hostingContext.HostingEnvironment);
+                    });
                 })
             .ConfigureLogging(logging => logging.AddConsole());
     }
