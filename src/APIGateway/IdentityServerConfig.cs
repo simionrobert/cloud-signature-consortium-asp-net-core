@@ -11,7 +11,7 @@ namespace APIGateway
         public string IP { get; set; }
         public string Port { get; set; }
         public string IdentityScheme { get; set; }
-        public List<APIResource> Resources { get; set; }
+        public APIResource Resource { get; set; }
     }
 
     public class APIResource

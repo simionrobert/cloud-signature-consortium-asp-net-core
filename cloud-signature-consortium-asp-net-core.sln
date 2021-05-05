@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSCD", "src\rscd\RSCD.cspro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenIDConnectProvider", "src\OpenIDConnectProvider\OpenIDConnectProvider.csproj", "{DDEC027F-457F-4792-9EC2-72A7653AE818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "src\APIGateway\APIGateway.csproj", "{144A9838-44B1-4A79-B41F-AE42971C9BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "src\APIGateway\APIGateway.csproj", "{144A9838-44B1-4A79-B41F-AE42971C9BD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

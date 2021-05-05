@@ -23,14 +23,13 @@ namespace APIGateway
                 {
                     webBuilder.UseStartup<Startup>();
 
-                    webBuilder.ConfigureAppConfiguration((hostingContext, config) => {
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    {
                         config
-                            .AddJsonFile($"ocelot.json", optional: false, reloadOnChange: true)
-                            .AddJsonFile($"ocelot.csc.json", optional: false, reloadOnChange: true)
-                            .AddJsonFile($"ocelot.oauth.json", optional: false, reloadOnChange: true);
-
-                        config.AddOcelot(hostingContext.HostingEnvironment);
+                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile($"ocelot.json", optional: false, reloadOnChange: true);
                     });
+
                 })
             .ConfigureLogging(logging => logging.AddConsole());
     }

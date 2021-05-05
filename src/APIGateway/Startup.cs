@@ -8,6 +8,7 @@ using Ocelot.Middleware;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.Extensions.Configuration;
 
+
 namespace APIGateway
 {
     public class Startup
@@ -22,24 +23,23 @@ namespace APIGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
-
             var builder = services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme);
+
             IdentityServerConfig identityServerConfig = new IdentityServerConfig();
             Configuration.Bind("IdentityServerConfig", identityServerConfig);
-            if (identityServerConfig != null && identityServerConfig.Resources != null)
+            if (identityServerConfig != null && identityServerConfig.Resource != null)
             {
-                foreach (var resource in identityServerConfig.Resources)
+                builder.AddIdentityServerAuthentication(identityServerConfig.Resource.Key, options =>
                 {
-                    builder.AddIdentityServerAuthentication(resource.Key, options =>
-                    {
-                        options.Authority = $"{identityServerConfig.Protocol}://{identityServerConfig.IP}:{identityServerConfig.Port}";
-                        options.RequireHttpsMetadata = false; //TODO: turn on in prod
-                        options.ApiName = resource.Name;
-                      
-                        //options.SupportedTokens = SupportedTokens.Reference;
-                    });
-                }
+                    options.Authority = $"{identityServerConfig.Protocol}://{identityServerConfig.IP}:{identityServerConfig.Port}";
+                    options.RequireHttpsMetadata = false; //TODO: turn on in prod
+                    options.ApiSecret = "apisecret";
+                    options.ApiName = identityServerConfig.Resource.Name;
+                   
+                });
             }
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

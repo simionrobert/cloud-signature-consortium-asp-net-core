@@ -21,15 +21,15 @@ namespace OpenIDConnectProvider
         public void ConfigureServices(IServiceCollection services)
         {
             var section = Configuration.GetSection("SSOConfig");
-
             services.AddControllersWithViews();
-
             services.AddIdentityServer()
                     .AddInMemoryApiResources(Config.GetApiResources(section))
                     .AddInMemoryApiScopes(Config.ApiScopes)
-                    .AddInMemoryClients(Config.GetClients)
-                      .AddTestUsers(Config.GetUsers())
+                    .AddInMemoryClients(Config.Clients)
+                      .AddTestUsers(Config.Users)
                       .AddDeveloperSigningCredential();
+
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
