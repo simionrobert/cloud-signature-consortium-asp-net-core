@@ -5,10 +5,11 @@ This application follows the [CSC API V1.0.4.0](https://cloudsignatureconsortium
 
 ## Run in Docker
 
+You can run the Web sample by running these commands from the root folder (where the .sln file is located):
+
 ```
-cd src/cloud-signature-consortium-asp-net-core
-docker build -t csc.
-docker run -p 5000:5000 csc
+docker-compose build
+docker-compose up
 ```
 
 ## Authors

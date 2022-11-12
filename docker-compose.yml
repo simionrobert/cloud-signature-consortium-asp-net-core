@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  rscd:
+    image: ${DOCKER_REGISTRY-}rscd
+    build:
+      context: .
+      dockerfile: src/rscd/Dockerfile
+
+  openidconnectprovider:
+    image: ${DOCKER_REGISTRY-}openidconnectprovider
+    build:
+      context: .
+      dockerfile: src/OpenIDConnectProvider/Dockerfile
+
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: src/APIGateway/Dockerfile
+
